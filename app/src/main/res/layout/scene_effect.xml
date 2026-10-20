@@ -1,0 +1,11 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CaptureTarget">
+    <include
+        layout="@layout/sample_start" />
+    <io.github.viewcapture.demo.sample.RenderEffectSampleView
+        android:id="@+id/effect_sample"
+        style="@style/SampleRegion" />
+    <include
+        layout="@layout/sample_end" />
+</LinearLayout>

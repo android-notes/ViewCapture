@@ -1,0 +1,11 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CaptureTarget">
+    <include
+        layout="@layout/sample_start" />
+    <io.github.viewcapture.demo.sample.OutlineSampleView
+        style="@style/SampleRegion"
+        android:clipChildren="false" />
+    <include
+        layout="@layout/sample_end" />
+</LinearLayout>

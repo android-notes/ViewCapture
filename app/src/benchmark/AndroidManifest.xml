@@ -1,0 +1,11 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <activity
+            android:name="io.github.viewcapture.demo.CaptureBenchmarkActivity"
+            android:exported="true" />
+        <activity
+            android:name="io.github.viewcapture.demo.ScaleBenchmarkActivity"
+            android:exported="true" />
+    </application>
+</manifest>

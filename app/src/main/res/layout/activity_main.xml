@@ -1,0 +1,98 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:background="#F5F7FA">
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#444444"
+        android:textSize="18sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/capture_software"
+            style="@style/CaptureButton"
+            android:text="Software Canvas" />
+        <Button
+            android:id="@+id/capture_hardware"
+            style="@style/CaptureButton"
+            android:text="ViewCapture" />
+        <Button
+            android:id="@+id/capture_pixel_copy"
+            style="@style/CaptureButton"
+            android:text="PixelCopy stitching" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="32dp"
+        android:text="Waiting for the first frame..."
+        android:textSize="12sp"
+        android:textColor="#444444" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:background="@drawable/capture_backdrop">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                style="@style/CompareHeading"
+                android:text="Source View" />
+            <io.github.viewcapture.demo.CaptureScrollView
+                android:id="@+id/scene_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="false"
+                android:overScrollMode="never"
+                android:contentDescription="Source View, synchronized scrolling" />
+        </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#BFC5CC" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                style="@style/CompareHeading"
+                android:text="Captured bitmap" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <io.github.viewcapture.demo.BitmapCompareView
+                    android:id="@+id/bitmap_compare"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="false"
+                    android:overScrollMode="never" />
+                <TextView
+                    android:id="@+id/preview_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="Capture a View\nto compare it here"
+                    android:textSize="14sp"
+                    android:textColor="#777777" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
