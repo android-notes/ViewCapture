@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+def jitpack = System.getenv('JITPACK') == 'true'
+group = jitpack ? System.getenv('GROUP') : 'com.wanjian.capture'
+version = jitpack ? System.getenv('VERSION') : '0.1.0-SNAPSHOT'
+
+android {
+    namespace 'com.wanjian.capture'
+    compileSdk 34
+    defaultConfig {
+        minSdk 21
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    publishing { singleVariant('release') { withSourcesJar(); withJavadocJar() } }
+}
+
+dependencies {
+    compileOnly project(':hidden-api-stubs')
+    // 6.2 requires compileSdk 37; 6.1 remains compatible with compileSdk 34.
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:6.1'
+}
+
+// Prefer compile-only declarations over the SDK's incomplete HardwareRenderer signature.
+android.libraryVariants.all { variant ->
+    variant.javaCompileProvider.configure {
+        def sdkClasspath = classpath
+        classpath = files(sdkClasspath.filter { it.name != 'android.jar' },
+                sdkClasspath.filter { it.name == 'android.jar' })
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                artifactId = jitpack ? System.getenv('ARTIFACT') : 'view-capture'
+                pom {
+                    name = 'View Capture'
+                    description = 'Full-size View snapshots with hardware rendering and a software Canvas fallback on Android 5.0+.'
+                    url = 'https://github.com/android-notes/ViewCapture'
+                    scm {
+                        url = 'https://github.com/android-notes/ViewCapture'
+                        connection = 'scm:git:https://github.com/android-notes/ViewCapture.git'
+                    }
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

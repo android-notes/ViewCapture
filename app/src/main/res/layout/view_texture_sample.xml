@@ -1,0 +1,11 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextureView
+        android:id="@+id/texture_producer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <io.github.viewcapture.demo.sample.SampleTextView
+        style="@style/SampleLabel"
+        android:tag="texture-view-label"
+        android:text="TextureView" />
+</merge>

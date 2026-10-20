@@ -1,0 +1,48 @@
+{
+  "device": "24069RA21C",
+  "api": 35,
+  "buildType": "debug",
+  "videoSource": "res\/raw\/flower.mp4",
+  "width": 572,
+  "height": 1536,
+  "videoPlayingDuringCapture": true,
+  "renderEffect": "blur(7px)",
+  "videoFramesChanged": true,
+  "regions": [
+    [
+      48,
+      48,
+      524,
+      528
+    ],
+    [
+      48,
+      528,
+      524,
+      1008
+    ],
+    [
+      48,
+      1008,
+      524,
+      1488
+    ]
+  ],
+  "captures": [
+    {
+      "method": "Software Canvas",
+      "file": "software-canvas.png",
+      "paddingAlpha": 0
+    },
+    {
+      "method": "ViewCapture",
+      "file": "viewcapture.png",
+      "paddingAlpha": 0
+    },
+    {
+      "method": "PixelCopy stitching",
+      "file": "pixelcopy.png",
+      "paddingAlpha": 255
+    }
+  ]
+}

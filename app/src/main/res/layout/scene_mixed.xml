@@ -1,0 +1,52 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CaptureTarget">
+    <include
+        layout="@layout/sample_start" />
+    <io.github.viewcapture.demo.sample.TextureSampleView
+        android:id="@+id/texture_sample"
+        style="@style/SampleRegion" />
+    <io.github.viewcapture.demo.sample.VideoTextureSampleView
+        android:id="@+id/video_sample"
+        style="@style/SampleRegion" />
+    <io.github.viewcapture.demo.sample.WebSampleView
+        android:id="@+id/web_sample"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+    <io.github.viewcapture.demo.sample.SampleTextView
+        style="@style/SampleRegion"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:textColor="#444444"
+        android:text="TextView\nPlain text · Transparent background\nSoftware / Hardware Canvas" />
+    <io.github.viewcapture.demo.sample.GradientSampleView
+        android:layout_width="match_parent"
+        android:layout_height="320dp" />
+    <io.github.viewcapture.demo.sample.SurfaceSampleView
+        android:id="@+id/surface_sample"
+        style="@style/SampleRegion" />
+    <io.github.viewcapture.demo.sample.HardwareBitmapSampleView
+        android:id="@+id/bitmap_sample"
+        style="@style/SampleRegion"
+        android:contentDescription="HARDWARE Bitmap · Config.HARDWARE" />
+    <io.github.viewcapture.demo.sample.OutlineSampleView
+        style="@style/SampleRegion"
+        android:clipChildren="false" />
+    <io.github.viewcapture.demo.sample.RenderEffectSampleView
+        android:id="@+id/effect_sample"
+        style="@style/SampleRegion" />
+    <io.github.viewcapture.demo.sample.ComplexPathSampleView
+        android:id="@+id/complex_path_sample"
+        android:layout_width="match_parent"
+        android:layout_height="320dp" />
+    <io.github.viewcapture.demo.sample.TransformSampleView
+        android:id="@+id/transform_sample"
+        android:layout_width="match_parent"
+        android:layout_height="320dp" />
+    <io.github.viewcapture.demo.sample.LayerBlendSampleView
+        android:id="@+id/layer_blend_sample"
+        android:layout_width="match_parent"
+        android:layout_height="320dp" />
+    <include
+        layout="@layout/sample_end" />
+</LinearLayout>
