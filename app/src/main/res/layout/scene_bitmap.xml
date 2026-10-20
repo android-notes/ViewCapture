@@ -1,0 +1,12 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CaptureTarget">
+    <include
+        layout="@layout/sample_start" />
+    <io.github.viewcapture.demo.sample.HardwareBitmapSampleView
+        android:id="@+id/bitmap_sample"
+        style="@style/SampleRegion"
+        android:contentDescription="HARDWARE Bitmap · Config.HARDWARE" />
+    <include
+        layout="@layout/sample_end" />
+</LinearLayout>

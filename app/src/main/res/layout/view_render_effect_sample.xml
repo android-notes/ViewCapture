@@ -1,0 +1,15 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <io.github.viewcapture.demo.sample.SampleTextView
+        android:id="@+id/effect_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="RenderEffect · blur"
+        android:textSize="32sp"
+        android:textColor="#000000" />
+    <io.github.viewcapture.demo.sample.SampleTextView
+        style="@style/SampleLabel"
+        android:text="RenderEffect"
+        android:textSize="14sp" />
+</merge>

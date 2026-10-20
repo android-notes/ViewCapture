@@ -1,0 +1,5 @@
+ViewCaptureLab
+Copyright 2026 ViewCaptureLab contributors
+
+This project includes the Gradle Wrapper and depends on AndroidHiddenApiBypass.
+See THIRD_PARTY_NOTICES.md for attribution and upstream links.

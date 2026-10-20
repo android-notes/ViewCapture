@@ -1,0 +1,63 @@
+plugins { id 'com.android.application' }
+
+def releaseSigning = new Properties()
+rootProject.file('signing/release.properties').withInputStream { releaseSigning.load(it) }
+def deviceTestBuildType = providers.gradleProperty('deviceTestBuildType').getOrElse('debug')
+
+android {
+    namespace 'io.github.viewcapture.demo'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'io.github.viewcapture.demo'
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName '0.1.0'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        manifestPlaceholders = [appLabel: 'View Capture Lab']
+    }
+    testBuildType deviceTestBuildType
+    buildFeatures { buildConfig true }
+    if (providers.gradleProperty('captureBenchmark').getOrElse('false').toBoolean()) {
+        sourceSets.release {
+            java.srcDir 'src/benchmark/java'
+            manifest.srcFile 'src/benchmark/AndroidManifest.xml'
+        }
+    }
+    if (deviceTestBuildType == 'release') {
+        sourceSets.androidTest.java.setIncludes(['**/CaptureUiTest.java'])
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    signingConfigs {
+        release {
+            storeFile rootProject.file(releaseSigning.getProperty('storeFile'))
+            storeType releaseSigning.getProperty('storeType')
+            storePassword releaseSigning.getProperty('storePassword')
+            keyAlias releaseSigning.getProperty('keyAlias')
+            keyPassword releaseSigning.getProperty('keyPassword')
+        }
+    }
+    buildTypes {
+        release {
+            applicationIdSuffix '.release'
+            manifestPlaceholders = [appLabel: 'View Capture Lab Release']
+            signingConfig signingConfigs.release
+            debuggable false
+            jniDebuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':lib')
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    // AndroidX Test references these annotations; release test APKs also run through R8.
+    androidTestCompileOnly 'com.google.errorprone:error_prone_annotations:2.36.0'
+}

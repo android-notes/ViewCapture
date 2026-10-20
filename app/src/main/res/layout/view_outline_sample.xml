@@ -1,0 +1,16 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <io.github.viewcapture.demo.sample.GradientSampleView
+        android:id="@+id/outline_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="8dp" />
+    <io.github.viewcapture.demo.sample.SampleTextView
+        style="@style/SampleLabel"
+        android:text="Rounded gradient"
+        android:textSize="14sp"
+        android:translationZ="9dp" />
+</merge>
